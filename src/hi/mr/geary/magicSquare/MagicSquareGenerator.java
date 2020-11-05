@@ -9,7 +9,8 @@ public class MagicSquareGenerator {
     public static Square squareGenerator(int n, int startingNumber) throws InvalidSize {
         if (n < 2) throw new InvalidSize(n);
         Integer[][] data;
-        if (n % 2 == 1) data = oddGenerator(n);
+        if (n == 2) return null;
+        else if (n % 2 == 1) data = oddGenerator(n);
         else if (n % 4 == 0) data = doublyEven(n);
         else data = singlyEven(n);
         if (startingNumber != 1)

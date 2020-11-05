@@ -26,12 +26,10 @@ public class Main {
             int n = scanner.nextInt();
             if (Square.notInRange(n)) throw new InvalidSize(n);
             Integer[][] data = new Integer[n][n];
-            System.out.println("Sick we have " + (int) Math.pow(n, 2) + " spaces to fill. We will start with the top left and work sideways.");
-            int count = 1;
+            System.out.println("Sick, we have " + (int) Math.pow(n, 2) + " spaces to fill. We will start with the top left and work sideways. If there are duplicates, the square is automatically not magic.");
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    System.out.print("Please input the " + count + " number: ");
-                    count++;
+                    System.out.print("Please input the " + (i * n + j + 1) + " number: ");
                     int input = scanner.nextInt();
                     if (input > 0) data[i][j] = input;
                     else throw new InvalidInput("The number you entered is less than 0.");
@@ -51,9 +49,11 @@ public class Main {
             System.out.print("What number would you like to start with? (any number): ");
             int startingNumber = scanner.nextInt();
             Square generatedSquare = MagicSquareGenerator.squareGenerator(n, startingNumber);
-            System.out.println("Fantastic, here is the generated square! \n");
-            System.out.println(generatedSquare);
-            System.out.println(generatedSquare.magic);
+            if (generatedSquare != null) {
+                System.out.println("Fantastic, here is the generated square! \n");
+                System.out.println(generatedSquare);
+            } else System.out.println("Two does not make a valid magic square.");
+
         } else throw new InvalidInput(option + " is not a valid choice.");
     }
 }
