@@ -47,6 +47,7 @@ public class Main {
             //hey mr. geary I spent a lot of time coding it so that it can generate ANY magic square for any number, so if you want to see that, comment out line 49
             int n = scanner.nextInt();
             if (Square.notInRange(n)) throw new InvalidSize(n);
+            //if (n < 1) throw new InvalidSize(n);
             System.out.print("What number would you like to start with? (any number): ");
             int startingNumber = scanner.nextInt();
             Square generatedSquare = MagicSquareGenerator.squareGenerator(n, startingNumber);
